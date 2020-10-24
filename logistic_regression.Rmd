@@ -1,0 +1,45 @@
+---
+title: "logistic_regression"
+author: "Rio Risqi - Arya Nanda"
+date: "10/24/2020"
+output: html_document
+---
+
+```{r}
+library(datasets)
+fsd_data <- read.csv("/Users/LENOVO/Documents/RStudio/naive_bayes2/iris.csv")
+head(fsd_data)
+```
+
+```{r}
+dt <- subset(fsd_data, select = c(SepalLengthCm, PetalLengthCm, PetalWidthCm))
+dt
+```
+
+```{r}
+fit <- glm(formula = PetalWidthCm~SepalLengthCm, data = fsd_data, family = gaussian)
+summary(fit)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(dt, aes(x=SepalLengthCm, y=PetalWidthCm)) + geom_point() +
+  stat_smooth(method = "glm", method.args = list(family="gaussian"), se = FALSE)
+```
+
+```{r}
+fit2 <- lm(formula = PetalWidthCm~SepalLengthCm+PetalLengthCm, data = fsd_data)
+summary(fit2)
+```
+
+```{r}
+library(predict3d)
+```
+
+```{r}
+ggPredict(fit2)
+```
+

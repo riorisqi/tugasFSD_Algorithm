@@ -1,0 +1,31 @@
+---
+title: "linear_regression_multiple"
+author: "Rio Risqi - Arya Nanda"
+date: "10/24/2020"
+output: html_document
+---
+
+```{r}
+library(datasets)
+fsd_data <- read.csv("/Users/LENOVO/Documents/RStudio/naive_bayes2/iris.csv")
+head(fsd_data)
+```
+
+```{r}
+fsd_data$Species = ifelse(fsd_data$SepalWidthCm==0, "Iris-setosa","Iris-versicolor")
+fit <- lm(SepalLengthCm~SepalWidthCm+PetalLengthCm, data = fsd_data)
+summary(fit)
+```
+
+```{r}
+library(predict3d)
+```
+
+```{r}
+ggPredict(fit)
+```
+
+```{r}
+ggPredict(fit, show.error = TRUE, facet.modx = TRUE, show.text = FALSE)
+```
+

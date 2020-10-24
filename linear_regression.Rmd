@@ -1,0 +1,40 @@
+---
+title: "linear_regression"
+author: "Rio Risqi - Arya Nanda"
+date: "10/24/2020"
+output: html_document
+---
+
+```{r}
+library(datasets)
+fsd_data <- read.csv("/Users/LENOVO/Documents/RStudio/naive_bayes2/iris.csv")
+attach(fsd_data)
+str(fsd_data)
+```
+
+```{r}
+head(fsd_data)
+```
+
+```{r}
+new_dt <- subset(fsd_data, select = c(SepalLengthCm, SepalWidthCm))
+new_dt
+```
+
+```{r}
+fit <- lm(SepalLengthCm~SepalWidthCm, data = fsd_data)
+summary(fit)
+```
+
+```{r}
+library(predict3d)
+```
+
+```{r}
+ggPredict(fit)
+```
+
+```{r}
+ggPredict(fit, xpos = 0.75, vjust = 1.5, show.error = TRUE)
+```
+
